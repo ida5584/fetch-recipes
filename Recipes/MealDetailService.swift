@@ -29,7 +29,6 @@ class MealDetailService: ObservableObject {
             }
             
             do {
-                // Log the raw JSON response
                 if let json = String(data: data, encoding: .utf8) {
                     print("Raw JSON response: \(json)")
                 }
@@ -40,7 +39,6 @@ class MealDetailService: ObservableObject {
                 }
             } catch {
                 DispatchQueue.main.async {
-                    // Log the decoding error
                     print("Decoding error: \(error.localizedDescription)")
                     self.errorMessage = error.localizedDescription
                 }

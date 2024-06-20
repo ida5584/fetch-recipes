@@ -29,30 +29,19 @@ struct MealDetail: Codable {
             let ingredientKeyString = "strIngredient\(index)"
             let measureKeyString = "strMeasure\(index)"
             
-//            -- Debugging --
             if let ingredientKey = CodingKeys(stringValue: ingredientKeyString) {
-                if let ingredient = try container.decodeIfPresent(String.self, forKey: ingredientKey) {
-                    print("Ingredient Key: \(ingredientKeyString) - Value: \(ingredient)")
-                } else {
-                    print("Ingredient Key: \(ingredientKeyString) not found or value is nil")
-                }
-            } else {
-                print("Failed to create ingredient key for: \(ingredientKeyString)")
-            }
-//           -- Debugging --
-            
-            if let ingredientKey = CodingKeys(stringValue: ingredientKeyString) {
-                if let ingredient = try container.decodeIfPresent(String.self, forKey: ingredientKey) {
+                if let ingredient = try container.decodeIfPresent(String.self, forKey: ingredientKey), !ingredient.isEmpty {
                     ingredients.append(ingredient)
                 }
             }
             if let measureKey = CodingKeys(stringValue: measureKeyString) {
-                if let measure = try container.decodeIfPresent(String.self, forKey: measureKey) {
+                if let measure = try container.decodeIfPresent(String.self, forKey: measureKey), !measure.isEmpty {
                     measures.append(measure)
                 }
             }
         }
-    
+        print(ingredients)
+        
         self.ingredients = ingredients
         self.measures = measures
     }
@@ -63,15 +52,10 @@ struct MealDetail: Codable {
         try container.encode(strMeal, forKey: .strMeal)
         try container.encode(strMealThumb, forKey: .strMealThumb)
         try container.encode(strInstructions, forKey: .strInstructions)
-
-        // implement encoding for ingredients and measures if needed
-        // Example: If you want to encode ingredients as an array of strings
-        // try container.encode(ingredients, forKey: .ingredients)
     }
 
     enum CodingKeys: String, CodingKey {
         case idMeal, strMeal, strMealThumb, strInstructions
-        // Add more cases for dynamic keys if needed
         case strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strIngredient16, strIngredient17, strIngredient18, strIngredient19, strIngredient20
         case strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15, strMeasure16, strMeasure17, strMeasure18, strMeasure19, strMeasure20
     }
