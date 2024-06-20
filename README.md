@@ -1,4 +1,3 @@
-Fetch Recipe App
 The Fetch Recipe app is a SwiftUI-based application that allows users to browse through various desserts fetched from an API. Users can select a dessert to view its details, including ingredients and instructions.
 
 Features
